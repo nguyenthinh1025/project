@@ -9,13 +9,26 @@ export default function ListProduct(props) {
   const [selectedProductId, setSelectedProductId] = useState(null);
 
   const moveToNext = () => {
-    setStartIndex(startIndex + 6);
+    const newStartIndex = startIndex + 6;
+    if (newStartIndex < arrayProducts.length) {
+      setStartIndex(newStartIndex);
+    } else {
+      setStartIndex(0);
+    }
   };
-
+  
   const moveToPrevious = () => {
-    setStartIndex(startIndex - 6);
+    const newStartIndex = startIndex - 6;
+    if (newStartIndex >= 0) {
+      setStartIndex(newStartIndex);
+    } else {
+      const lastPageStartIndex = Math.max(
+        Math.floor(arrayProducts.length / 6) * 6,
+        0
+      );
+      setStartIndex(lastPageStartIndex);
+    }
   };
-
   const handleClick = (id) => {
     setSelectedProductId(id);
   };
@@ -45,7 +58,7 @@ export default function ListProduct(props) {
                   <p className="l-inline-block" />
                   <div className="shopping-cart l-inline-block">
                   <i class="fa-solid fa-cart-plus"  onClick={() => {
-                        handleSideBar();
+                        handleCart();
                       }}></i>
 
                     <span

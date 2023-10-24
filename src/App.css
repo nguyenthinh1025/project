@@ -35,3 +35,7 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
+.owl-item {
+  animation-duration: 1.5s; /* Chuyển động trong 1.5 giây */
+}
